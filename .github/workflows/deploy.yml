@@ -10,10 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Local registry (10.0.0.131:5000) uses no auth by default.
-      # If auth is configured, uncomment:
-      # - name: Login to registry
-      #   run: echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login 10.0.0.131:5000 -u admin --password-stdin
+      - name: Login to registry
+        run: echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login 10.0.0.131:5000 -u "${{ secrets.REGISTRY_USER }}" --password-stdin
 
       - name: Build and push
         run: |
