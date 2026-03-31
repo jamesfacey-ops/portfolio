@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>James · Full-stack + AI builder</title>
+  <meta name="description" content="I turn complex AI ideas into working software — faster than you'd expect. Full-stack + AI systems developer specializing in LLM orchestration, production infrastructure, and multi-agent systems.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="James · Full-stack + AI builder">
+  <meta property="og:description" content="I turn complex AI ideas into working software — faster than you'd expect.">
+  <meta property="og:image" content="https://portfolio.jnkfacey.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://portfolio.jnkfacey.com">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="James · Full-stack + AI builder">
+  <meta name="twitter:description" content="I turn complex AI ideas into working software — faster than you'd expect.">
+  <meta name="twitter:image" content="https://portfolio.jnkfacey.com/assets/og-image.png">
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#0a0a0a">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://portfolio.jnkfacey.com">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Manifest -->
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <nav id="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Back to top">J</a>
+      <ul class="nav-links" role="list">
+        <li><a href="#projects">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact" class="btn-nav">Get in touch</a></li>
+      </ul>
+      <button
+        class="nav-toggle"
+        aria-expanded="false"
+        aria-controls="nav-mobile"
+        aria-label="Open menu"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div id="nav-mobile" class="nav-mobile" hidden>
+      <a href="#projects">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Get in touch</a>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       HERO
+       ============================================ -->
+  <section id="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-content">
+      <p class="hero-label">Full-stack + AI builder</p>
+      <h1>I turn complex AI ideas<br>into working software —<br>faster than you'd expect.</h1>
+      <p class="hero-sub">
+        I've built production systems with LLM orchestration, real-time infrastructure,
+        and live users — from a K-12 classroom AI platform to a multi-agent job scheduler.
+      </p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">See My Work</a>
+        <a href="#contact" class="btn-secondary">Have a project?</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PROJECTS
+       ============================================ -->
+  <section id="projects">
+    <div class="container">
+      <h2>What I've Built</h2>
+      <div class="projects-grid">
+
+        <!-- Shamus -->
+        <article class="project-card">
+          <div class="project-header">
+            <h3>Shamus</h3>
+            <div class="project-tags" aria-label="Technologies used">
+              <span>Python</span>
+              <span>Elixir</span>
+              <span>SvelteKit</span>
+              <span>PostgreSQL</span>
+              <span>Claude API</span>
+            </div>
+          </div>
+          <p class="project-desc">An AI-powered classroom management platform that replaced three commercial tools in one active K-12 classroom.</p>
+          <ul class="project-bullets" aria-label="Key highlights">
+            <li>Overnight LLM grading pipeline processes handwritten student work via OCR; auto-differentiates every assignment into 3 tiers for IEP/504 compliance</li>
+            <li>22 microservices across Python (FastAPI), Elixir (Phoenix), and SvelteKit — deployed and used daily in a real classroom</li>
+            <li>Replaced Kickboard, Schoology, and a paper gradebook with one interface for grading, parent communication, behavior tracking, and lesson planning</li>
+          </ul>
+          <p class="project-note">Private repo — references available on request</p>
+        </article>
+
+        <!-- Multi-Agent Orchestrator -->
+        <article class="project-card">
+          <div class="project-header">
+            <h3>Multi-Agent Orchestrator</h3>
+            <div class="project-tags" aria-label="Technologies used">
+              <span>Node.js</span>
+              <span>TypeScript</span>
+              <span>PostgreSQL</span>
+              <span>WebSocket</span>
+              <span>Docker</span>
+            </div>
+          </div>
+          <p class="project-desc">A job scheduler and swarm coordination system for running autonomous AI agents unattended.</p>
+          <ul class="project-bullets" aria-label="Key highlights">
+            <li>Processes a job queue while coordinating up to 8 parallel subagents internally; real-time WebSocket dashboard shows live execution status</li>
+            <li>Built-in rate-limit detection, crash recovery, frozen-job detection, and poison-job quarantine — runs overnight without supervision</li>
+            <li>Full lifecycle: queue, prioritize, execute, retry, cancel — with PostgreSQL persistence and a REST API</li>
+          </ul>
+          <a href="https://github.com/jnkfacey" class="project-link" target="_blank" rel="noopener noreferrer">
+            View on GitHub <span aria-hidden="true">→</span>
+          </a>
+        </article>
+
+        <!-- Fraya -->
+        <article class="project-card">
+          <div class="project-header">
+            <h3>Fraya</h3>
+            <div class="project-tags" aria-label="Technologies used">
+              <span>Claude API</span>
+              <span>MCP</span>
+              <span>n8n</span>
+              <span>Python</span>
+              <span>Docker</span>
+            </div>
+          </div>
+          <p class="project-desc">A personal AI assistant that knows your calendar, inbox, and home — and can act on all of them.</p>
+          <ul class="project-bullets" aria-label="Key highlights">
+            <li>Hard problem: making live data from disparate sources (email, Google Calendar, home automation, budgets) coherent in a single context in real time</li>
+            <li>Built on Claude + MCP + n8n; real tool integrations with side effects — not a chatbot wrapper that retrieves text</li>
+            <li>Reduced the cognitive overhead of a complex personal and professional life to a single natural-language interface</li>
+          </ul>
+          <a href="https://github.com/jnkfacey" class="project-link" target="_blank" rel="noopener noreferrer">
+            View on GitHub <span aria-hidden="true">→</span>
+          </a>
+        </article>
+
+        <!-- AI QA Pipeline -->
+        <article class="project-card">
+          <div class="project-header">
+            <h3>AI QA Pipeline</h3>
+            <div class="project-tags" aria-label="Technologies used">
+              <span>Claude API</span>
+              <span>Multi-agent</span>
+              <span>Python</span>
+              <span>PostgreSQL</span>
+            </div>
+          </div>
+          <p class="project-desc">An automated LLM swarm that critiques and improves implementation plans before a single line of code is written.</p>
+          <ul class="project-bullets" aria-label="Key highlights">
+            <li>Runs multi-round critique → revise cycles with specialized agents: architecture reviewer, scope-creep detector, integration checker</li>
+            <li>Catches structural mistakes and scope drift early — when fixes cost minutes instead of days of rework</li>
+            <li>Designed as a standard step in a development workflow; every project goes through it before build begins</li>
+          </ul>
+          <a href="https://github.com/jnkfacey" class="project-link" target="_blank" rel="noopener noreferrer">
+            View on GitHub <span aria-hidden="true">→</span>
+          </a>
+        </article>
+
+        <!-- Personal AI Stack -->
+        <article class="project-card">
+          <div class="project-header">
+            <h3>Personal AI Stack</h3>
+            <div class="project-tags" aria-label="Technologies used">
+              <span>Claude API</span>
+              <span>MCP</span>
+              <span>Cloudflare</span>
+              <span>Docker</span>
+              <span>TypeScript</span>
+            </div>
+          </div>
+          <p class="project-desc">A home assistant stack that gives one operator the workflow leverage of a three-person team.</p>
+          <ul class="project-bullets" aria-label="Key highlights">
+            <li>Custom MCP servers connecting Claude to real tools: monthly budget tracking, Word/Excel/PowerPoint generation, Google Calendar and Gmail management</li>
+            <li>Always-on and self-hosted behind Cloudflare tunnels — no SaaS subscriptions, no rate limits, no third-party data access</li>
+            <li>Production MCP deployment with daily-use workflows — not tutorial demos; these tools are used every day</li>
+          </ul>
+          <a href="https://github.com/jnkfacey" class="project-link" target="_blank" rel="noopener noreferrer">
+            View on GitHub <span aria-hidden="true">→</span>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       ABOUT
+       ============================================ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-content">
+        <h2>How I Work</h2>
+
+        <p>I'm a full-stack and AI systems developer. I build production-grade software — not demos, not prototypes that need to be thrown away. My work spans backend services, real-time infrastructure, LLM integrations, and the plumbing between them. I run a 3-node home cluster with 45+ Docker services because I prefer to understand the full stack, not abstract it away.</p>
+
+        <p>My process: understand the problem first, prototype fast, ship something real, then iterate. I use AI tooling throughout — including a critique pipeline I built specifically to catch architectural mistakes before they become expensive. The result is fewer rewrites and faster delivery than you'd get from a team working sequentially.</p>
+
+        <p>All the projects above are self-directed. I'm now available for client engagements. I work best on greenfield AI products, internal tooling, and systems that need to integrate across multiple data sources. <a href="#contact">References from collaborators are available on request.</a></p>
+
+        <p class="social-proof">Have questions about my work or process? <a href="#contact">Let's talk.</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SKILLS
+       ============================================ -->
+  <section id="skills">
+    <div class="container">
+      <h2>Tech I Work With</h2>
+      <div class="skills-grid">
+
+        <div class="skill-category">
+          <h3>Languages</h3>
+          <div class="skill-badges" aria-label="Programming languages">
+            <span>Python</span>
+            <span>Elixir</span>
+            <span>TypeScript</span>
+            <span>JavaScript</span>
+            <span>SQL</span>
+            <span>Bash</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Frameworks</h3>
+          <div class="skill-badges" aria-label="Frameworks and libraries">
+            <span>FastAPI</span>
+            <span>Phoenix</span>
+            <span>SvelteKit</span>
+            <span>Node.js</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>AI / LLM</h3>
+          <div class="skill-badges" aria-label="AI and LLM technologies">
+            <span>Claude API</span>
+            <span>Ollama</span>
+            <span>RAG</span>
+            <span>Qdrant</span>
+            <span>Multi-agent systems</span>
+            <span>MCP</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Infrastructure</h3>
+          <div class="skill-badges" aria-label="Infrastructure technologies">
+            <span>Docker</span>
+            <span>Proxmox</span>
+            <span>Cloudflare</span>
+            <span>PostgreSQL</span>
+            <span>Redis</span>
+            <span>nginx</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Tooling</h3>
+          <div class="skill-badges" aria-label="Development tooling">
+            <span>n8n</span>
+            <span>PM2</span>
+            <span>GitHub Actions</span>
+            <span>Claude Code</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CONTACT
+       ============================================ -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <h2>Have a project?</h2>
+        <p class="contact-sub">Tell me what you're building. I'll let you know if I can help and how fast I can move.</p>
+        <a href="mailto:james@jnkfacey.com" class="btn-primary btn-large">
+          Send me an email
+        </a>
+        <p class="email-fallback">james@jnkfacey.com</p>
+        <div class="contact-links">
+          <a href="https://github.com/jnkfacey" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer>
+    <div class="container">
+      <p>Built with HTML, CSS, and a lot of iteration.</p>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
