@@ -66,4 +66,55 @@
     observer.observe(s);
   });
 
+  // --- Contact form ---
+  var form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = document.getElementById('cf-submit');
+      var status = document.getElementById('cf-status');
+      var name = document.getElementById('cf-name').value.trim();
+      var email = document.getElementById('cf-email').value.trim();
+      var message = document.getElementById('cf-message').value.trim();
+
+      if (!name || !email || !message) {
+        status.textContent = 'Please fill in all fields.';
+        status.className = 'form-status form-error';
+        status.hidden = false;
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      status.hidden = true;
+
+      fetch('/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name, email: email, message: message })
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (data.ok) {
+            form.reset();
+            status.textContent = 'Message sent. I\'ll be in touch.';
+            status.className = 'form-status form-success';
+          } else {
+            status.textContent = 'Something went wrong. Try emailing directly.';
+            status.className = 'form-status form-error';
+          }
+          status.hidden = false;
+          btn.disabled = false;
+          btn.textContent = 'Send message';
+        })
+        .catch(function () {
+          status.textContent = 'Could not send. Try emailing directly.';
+          status.className = 'form-status form-error';
+          status.hidden = false;
+          btn.disabled = false;
+          btn.textContent = 'Send message';
+        });
+    });
+  }
+
 }());
