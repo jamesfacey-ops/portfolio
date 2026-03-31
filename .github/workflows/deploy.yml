@@ -1,0 +1,25 @@
+name: Deploy Portfolio
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-push:
+    runs-on: self-hosted    # fraya-lxc runner — has Docker + LAN access to registry
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to registry
+        run: echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login 10.0.0.131:5000 -u "${{ secrets.REGISTRY_USER }}" --password-stdin
+
+      - name: Build and push
+        run: |
+          docker build -t 10.0.0.131:5000/portfolio:latest .
+          docker push 10.0.0.131:5000/portfolio:latest
+
+      - name: Pull and restart container
+        run: |
+          cd /opt/portfolio
+          docker compose pull portfolio
+          docker compose up -d portfolio
