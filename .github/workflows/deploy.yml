@@ -22,5 +22,5 @@ jobs:
         run: |
           cd /opt/portfolio
           docker compose pull portfolio
-          docker compose down portfolio || docker rm -f portfolio || true
+          docker rm -f portfolio || true
           docker compose up -d portfolio
