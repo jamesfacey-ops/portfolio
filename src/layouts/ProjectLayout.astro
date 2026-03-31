@@ -1,0 +1,17 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  jsonLd?: object;
+}
+
+const { title, description, ogImage, jsonLd } = Astro.props;
+---
+<BaseLayout title={title} description={description} ogImage={ogImage} jsonLd={jsonLd}>
+  <main class="max-w-3xl mx-auto px-4 py-16">
+    <slot />
+  </main>
+</BaseLayout>

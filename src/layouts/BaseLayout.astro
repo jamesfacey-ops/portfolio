@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  jsonLd?: object | object[];
+}
+
+const { title, description, ogImage = '/og-image.png', jsonLd } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- NOTE: No font preload — @fontsource hashes filenames at build time.
+         CSS @font-face handles loading correctly. -->
+    {jsonLdArray.map(schema => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

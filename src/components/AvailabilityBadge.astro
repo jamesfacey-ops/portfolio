@@ -1,0 +1,23 @@
+---
+// No PUBLIC_ prefix — read server-side at Astro build time (correct for .astro components)
+const message = import.meta.env.AVAILABILITY_MESSAGE
+  ?? 'Available for contract work · Starting April 2026';
+const available = !message.toLowerCase().startsWith('booked') &&
+                  !message.toLowerCase().includes('fully booked');
+---
+<span
+  class:list={[
+    'inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium',
+    available
+      ? 'bg-emerald-500/10 text-emerald-400 ring-1 ring-emerald-500/20'
+      : 'bg-red-500/10 text-red-400 ring-1 ring-red-500/20'
+  ]}
+>
+  <span
+    class:list={[
+      'h-1.5 w-1.5 rounded-full animate-pulse',
+      available ? 'bg-emerald-400' : 'bg-red-400'
+    ]}
+  ></span>
+  {message}
+</span>

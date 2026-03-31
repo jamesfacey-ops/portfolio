@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import CredibilityBar from '../components/CredibilityBar.astro';
+import InlineCTA from '../components/InlineCTA.astro';
+import HowIWork from '../components/HowIWork.astro';
+import TechStack from '../components/TechStack.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { getCollection } from 'astro:content';
+import { personSchema, websiteSchema } from '../data/jsonld';
+
+const featuredProjects = (await getCollection('projects'))
+  .filter(p => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const jsonLd = [personSchema, websiteSchema];
+---
+
+<BaseLayout
+  title="James Facey — AI Integration & Backend Engineer"
+  description="I build AI integrations and backend systems for teams that need to ship, not prototype. Available for contract work."
+  jsonLd={jsonLd}
+>
+  <main class="max-w-6xl mx-auto">
+    <Hero />
+
+    <section id="projects" class="px-4 md:px-8 py-16">
+      <h2 class="text-2xl font-bold mb-8" style="color: var(--color-text);">Projects</h2>
+      <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+        {featuredProjects.map(p => <ProjectCard project={p} />)}
+      </div>
+    </section>
+
+    <InlineCTA text="Interested in working together?" href="#contact" />
+
+    <div class="px-4 md:px-8">
+      <CredibilityBar />
+    </div>
+
+    <HowIWork />
+
+    <InlineCTA text="Sound like a fit? Get in touch" href="#contact" />
+
+    <TechStack />
+
+    <!-- ContactForm is a standard .astro component — no client:* directive -->
+    <ContactForm />
+  </main>
+</BaseLayout>

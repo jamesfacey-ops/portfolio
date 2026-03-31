@@ -1,0 +1,50 @@
+---
+title: Shamus
+tagline: AI classroom management platform — 22 microservices, one teacher's sanity
+order: 1
+featured: true
+status: production
+impact:
+  - "Reduced nightly grading from 4+ hours to under 20 minutes"
+  - "AI grades 90% of student work including handwritten papers"
+  - "Auto-differentiates every assignment into 3 IEP/504-compliant tiers"
+tech: [Python, FastAPI, Elixir, Phoenix, SvelteKit, PostgreSQL, Claude API, Docker, Redis, Qdrant]
+problem: |
+  Teachers spend 4+ hours per night grading, then manually differentiate every assignment
+  for students with IEPs and 504s — three separate tools (Kickboard, Schoology, PowerSchool)
+  with no integration, no AI, and no way to prove what you assigned to which student.
+solution: |
+  22-microservice platform deployed on Proxmox LXC. Python FastAPI services handle AI grading
+  via Claude API — including handwritten work through a Tika + OCR pipeline. Elixir/Phoenix
+  manages email, parent communication, and real-time classroom dashboard. SvelteKit PWA for
+  teachers and students. PostgreSQL with per-school row isolation. Science Bucks incentive
+  system, behavior tracking, sub plans, and standards alignment built in.
+architecture: "Nginx → SvelteKit PWA → FastAPI (grading/OCR/analytics/behavior/science-bucks) + Phoenix (email/chat/parent-comm/dashboard/tasks) → PostgreSQL + Redis + Qdrant. Claude API for grading and standards alignment. BGE-M3 for semantic search."
+timeline: "MVP in production in 6 weeks"
+---
+
+## The Problem
+
+Teachers in a typical classroom of 30 students spend 4+ hours every night grading and preparing differentiated assignments. IEP/504 compliance requires documenting that every student received an appropriate version of every assignment — a manual, error-prone process.
+
+The tools teachers use (Kickboard for behavior, Schoology/Canvas for assignments, PowerSchool for grades) don't talk to each other. Everything lives in spreadsheets.
+
+## What I Built
+
+Shamus replaces all three with a single platform:
+
+**AI Grading Engine** — Claude API grades student work overnight, including handwritten papers scanned and processed through Tika + OCR. The AI returns a score, rubric-aligned feedback, and flags for teacher review. Teachers see a queue of edge cases in the morning, not a stack of papers.
+
+**Auto-Differentiation** — Every assignment is automatically generated in 3 tiers (grade-level, modified, alternative) with IEP/504 documentation generated alongside. Teachers approve with one click.
+
+**Real-Time Dashboard** — Elixir/Phoenix LiveView dashboard shows live classroom status, student engagement, and today's science bucks tally. Updates in real-time without polling.
+
+**Parent Communication** — Automated weekly summaries, incident reports, and grade notifications via Phoenix email service. Parents see what their student is working on without requiring teacher involvement.
+
+**Task & Lesson Management** — Node.js task service with calendar integration. Sub plans auto-generate from current lesson context.
+
+## Architecture
+
+22 microservices behind nginx, deployed as Docker containers on a Proxmox LXC with 8GB RAM. PostgreSQL handles multi-tenant data with per-school row isolation. Redis for session management and caching. Qdrant + BGE-M3 for semantic search across resources and standards.
+
+The system runs autonomously overnight — grading, generating differentiations, sending parent summaries — and surfaces a morning briefing for each teacher by 6am.
